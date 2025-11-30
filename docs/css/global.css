@@ -16,6 +16,11 @@
     font-size: var(--font-size);
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 .content {
     display: flex;
     flex-direction: column;
@@ -26,6 +31,14 @@
     width: 100vw;
     max-width: 700px;
     padding: 0 20px;
+}
+
+footer {
+    --font-size: 12px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    font-size: var(--font-size);
 }
 
 .spacer {
