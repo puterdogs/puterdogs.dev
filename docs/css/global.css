@@ -5,9 +5,11 @@
     --col-denim-light: #f1f5f9;
     --col-cherry-red: #b91c1c;
     --col-cherry-light: #ececec;
+    --col-doodle-green: #65FF9C;
+    --col-doodle-dark: #040F16;
 
-    --col-text: var(--col-cherry-red);
-    --col-background: var(--col-cherry-light);
+    --col-text: var(--col-doodle-green);
+    --col-background: var(--col-doodle-dark);
 
     --font-size: 18px;
 
@@ -26,11 +28,18 @@
     font-size: var(--font-size);
 }
 
+html {
+    overflow-x: hidden;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
 body {
     display: flex;
     flex-direction: column;
     width: 100vw;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 a {
@@ -77,9 +86,15 @@ a {
     position: relative;
     max-height: 0;
     
-    transition-duration: 0.15s;
+    transition-duration: 0.25s;
     transition-property: opacity;
     opacity: 1;
+}
+
+.footer-socials {
+    transition-duration: 0.25s;
+    transition-property: opacity;
+    opacity: 0;
 }
 
 .edge-socials .buttons {
@@ -90,16 +105,29 @@ a {
     transform: translateX(calc((100% + var(--padding)) * -1)) translateY(calc(var(--footer-height) * -1));
 }
 
-.edge-socials .icon {
+.footer-socials .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: fit-content;
+}
+
+.edge-socials .icon,
+.footer-socials .icon {
     position: relative;
     min-width: var(--footer-height);
     min-height: var(--footer-height);
     color: var(--col-text);
 }
 
-.edge-socials a {
+.edge-socials a,
+.footer-socials a {
     min-width: 100%;
     min-height: 100%;
+}
+
+.footer-socials a {
+    display: none;
 }
 
 @media only screen and (max-width: 900px) {
@@ -109,6 +137,14 @@ a {
 
     .edge-socials a {
         display: none;
+    }
+
+    .footer-socials {
+        opacity: 1;
+    }
+
+    .footer-socials a {
+        display: inherit;
     }
 }
 
