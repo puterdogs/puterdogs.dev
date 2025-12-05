@@ -15,6 +15,7 @@
 
     --content-max-width: 700px;
     --content-side-padding: 20px;
+    --content-border: 1px solid var(--col-text);
 
     --footer-height: 30px;
 
@@ -37,6 +38,7 @@ html {
 body {
     display: flex;
     flex-direction: column;
+    gap: 0;
     width: 100vw;
     overflow-x: hidden;
     min-height: 100vh;
@@ -61,7 +63,7 @@ a {
 
     margin: 0 auto;
     margin-top: 50px;
-    width: 100vw;
+    width: calc(100vw - (var(--content-side-padding) * 2));
     max-width: var(--content-max-width);
     padding: 0 var(--content-side-padding);
 }
@@ -130,24 +132,6 @@ a {
     display: none;
 }
 
-@media only screen and (max-width: 900px) {
-    .edge-socials {
-        opacity: 0;
-    }
-
-    .edge-socials a {
-        display: none;
-    }
-
-    .footer-socials {
-        opacity: 1;
-    }
-
-    .footer-socials a {
-        display: inherit;
-    }
-}
-
 footer {
     --font-size: 12px;
     height: var(--footer-height);
@@ -168,4 +152,100 @@ footer {
 h1 {
     font-size: 32px;
     font-weight: bold;
+}
+
+h2 {
+    position: relative;
+    border: var(--content-border);
+    width: fit-content;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom-style: none;
+}
+
+h2::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    left: 100%;
+    top: 100%;
+    border-bottom: var(--content-border);
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 30px;
+    background-color: var(--col-text);
+    top: -1px;
+    left: 100%;
+    border-top: var(--content-border);
+    border-bottom: var(--content-border);
+}
+
+.gallery {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100vw;
+    height: 200px;
+    box-sizing: border-box;
+    border: var(--content-border);
+    border-top-style: none;
+    padding: 10px;
+}
+
+.gallery img {
+    box-sizing: border-box;
+    border: var(--content-border);
+    height: 100%;
+}
+
+#puterdogs-logo {
+    position: relative;
+    /* height: fit-content; */
+    width: 100px;
+}
+
+@media only screen and (max-width: 900px) {
+    .edge-socials {
+        opacity: 0;
+    }
+
+    .edge-socials a {
+        display: none;
+    }
+
+    .footer-socials {
+        opacity: 1;
+    }
+
+    .footer-socials a {
+        display: inherit;
+    }
+}
+
+@media only screen and (max-width: 235px) {
+    :root {
+        --font-size: 12px;
+        --footer-height: 15px;
+    }
+    
+    h1 {
+        font-size: 20px;
+    }
+
+    footer {
+        --font-size: 9px;
+    }
+
+    #puterdogs-logo {
+        width: 50px;
+    }
+
+    .gallery {
+        height: 100px;
+    }
 }
